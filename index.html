@@ -10,10 +10,12 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body class="max-w-[1200px] mx-auto">
-    <main class="pt-4 pb-5 text-center">
+    <main class="pt-4 pb-5 ">
         <h2 class="text-2xl font-bold text-center">Choose Your Trees</h2>
 
         <div class="main-box grid grid-cols-12 gap-8 mt-5">
+
+              <!-- button-catagories -->
             <div class="catagories bg-gray-50 card card-body shadow-xl col-span-3 ">
                 <h2 class="text-2xl ">Categories</h2>
                 <div class="all-catagory-button">
@@ -24,9 +26,32 @@
 
                 </div>
             </div>
-            <div class="trees  bg-green-500 col-span-6 ">
-                <h2 class="text-2xl">All Trees</h2>
+
+            <!-- trees-container -->
+            <div class="trees  bg-green-500 col-span-6 grid grid-cols-1 sm:grid-cols-3 gap-3 " id="trees-container">
+
+              <!-- <div class="card bg-base-100 shadow-sm">
+                  <figure>
+                     <img
+                     src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                      alt="Shoes" />
+                    </figure>
+                    <div class="card-body">
+                      <h2 class="card-title">Card Title</h2>
+                       <p class="line-clamp-1">A card component has a figure, a body part, and inside body there are title and actions parts</p>
+                       <div class="badge badge-accent">Accent</div>
+                       <div class="flex  justify-between items-center gap-1">
+                        <h2 class="font-bold text-xl text-[#15803D]">50000</h2>
+                         <button class="btn btn-primary bg-[#15803D]">Buy Now</button>
+                       </div>
+                  </div>
+              </div> -->
+
+
             </div>
+
+
+           <!-- cart -->
             <div class= "cart bg-blue-500 col-span-3">
                 <h2 class="text-2xl ">Your Cart</h2>
             </div>
