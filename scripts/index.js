@@ -41,15 +41,10 @@ loadCatagories()
     console.log(data.plants);
     treesContainer.innerHTML="";
     displayTress(data.plants);
-
-    allTreesButton.addEventListener('click',function(){
-    treesContainer.innerHTML ='';
-    loadTrees();
- })
-    
-    
-    
+   
  }
+
+ 
 
 // all tree loading funtion
 async function loadTrees(){
@@ -90,4 +85,17 @@ function displayTress(trees) {
 }
 loadTrees()
 
+allTreesButton.addEventListener('click',function(){
+       const allButtons = document.querySelectorAll('#catagory-container button, #all-trees-btn');
+   allButtons.forEach(btn=>{
+    btn.classList.remove('btn-primary')
+    btn.classList.add('btn-outline')
+   })
+
+    allTreesButton.classList.add('btn-primary')
+    allTreesButton.classList.remove('btn-outline') 
+
+    treesContainer.innerHTML="";
+    loadTrees();
+ })
 
