@@ -84,7 +84,7 @@ function displayTress(trees) {
     
 }
 loadTrees()
-
+//  this funion is for toggoling all trees button
 allTreesButton.addEventListener('click',function(){
        const allButtons = document.querySelectorAll('#catagory-container button, #all-trees-btn');
    allButtons.forEach(btn=>{
