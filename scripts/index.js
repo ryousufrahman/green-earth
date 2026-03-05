@@ -8,12 +8,34 @@ async function loadCatagories() {
         const btn = document.createElement('button')
         btn.className =' btn btn-outline w-full';
         btn.innerText = element.category_name;
+        btn.onclick =() => selectCatagory(element.id,btn)
         categoriesContainer.appendChild(btn);
         
         
     });   
 }
 loadCatagories()
+
+
+//   select catagory 
+
+ async function selectCatagory(id ,btn){
+    console.log(id , btn);
+   
+   const allButtons = document.querySelectorAll('#catagory-container button, #all-trees-btn');
+   allButtons.forEach(btn=>{
+    btn.classList.remove('btn-primary')
+    btn.classList.add('btn-outline')
+   })
+    btn.classList.add('btn-primary')
+    btn.classList.remove('btn-outline')
+    const res =await fetch(`https://openapi.programming-hero.com/api/category/${id}`)
+    
+    const data = await res.json()
+    console.log(data)
+    
+ }
+
 
 // all tree loading funtion
 async function loadTrees(){
