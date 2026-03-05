@@ -1,5 +1,7 @@
 const categoriesContainer =document.getElementById('catagory-container');
  const treesContainer =document.getElementById('trees-container')
+ const allTreesButton =document.getElementById('all-trees-btn')
+ 
 // this funtion for all the tree button
 async function loadCatagories() {
     const res = await fetch('https://openapi.programming-hero.com/api/categories');
@@ -8,7 +10,7 @@ async function loadCatagories() {
         const btn = document.createElement('button')
         btn.className =' btn btn-outline w-full';
         btn.innerText = element.category_name;
-        btn.onclick =() => selectCatagory(element.id,btn)
+        btn.onclick =() => selectCatagory(element.id, btn)
         categoriesContainer.appendChild(btn);
         
         
@@ -27,15 +29,27 @@ loadCatagories()
     btn.classList.remove('btn-primary')
     btn.classList.add('btn-outline')
    })
+
     btn.classList.add('btn-primary')
     btn.classList.remove('btn-outline')
-    const res =await fetch(`https://openapi.programming-hero.com/api/category/${id}`)
+
+    const res =await fetch(
+        `https://openapi.programming-hero.com/api/category/${id}
+        `)
     
-    const data = await res.json()
-    console.log(data)
+    const data = await res.json();
+    console.log(data.plants);
+    treesContainer.innerHTML="";
+    displayTress(data.plants);
+
+    allTreesButton.addEventListener('click',function(){
+    treesContainer.innerHTML ='';
+    loadTrees();
+ })
+    
+    
     
  }
-
 
 // all tree loading funtion
 async function loadTrees(){
@@ -48,6 +62,7 @@ async function loadTrees(){
 function displayTress(trees) {
     trees.forEach((tree)=>{
         const card =document.createElement('div');
+        
         card.className ="card bg-base-100 shadow-sm h-[300px]"
         card.innerHTML =`
         
@@ -74,5 +89,5 @@ function displayTress(trees) {
     
 }
 loadTrees()
-displayTress()
+
 
