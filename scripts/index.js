@@ -104,8 +104,13 @@ allTreesButton.addEventListener('click',function(){
 //  add to cart 
 
 function addToCart(id , name , price){
-
- cart.push(
+     const existingItem = cart.find(item=> item.id===id)
+     if(existingItem){
+        existingItem.quantity+=1;
+        updatecart()
+     }
+ else{
+   cart.push(
     {
         id,
         name,
@@ -114,7 +119,7 @@ function addToCart(id , name , price){
     });
     updatecart()
     
-}
+}}
 
 function updatecart() {
     cartContainer.innerHTML=''
