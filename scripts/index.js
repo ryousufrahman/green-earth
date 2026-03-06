@@ -1,6 +1,8 @@
 const categoriesContainer =document.getElementById('catagory-container');
  const treesContainer =document.getElementById('trees-container')
  const allTreesButton =document.getElementById('all-trees-btn')
+ const cart =[];
+ const cartContainer =document.getElementById('cartContainer')
  
 // this funtion for all the tree button
 async function loadCatagories() {
@@ -73,7 +75,7 @@ function displayTress(trees) {
                        <div class="badge badge-accent">${tree.category}</div>
                        <div class="flex  justify-between items-center gap-1">
                         <h2 class="font-bold text-xl text-[#15803D]">${tree.price}</h2>
-                         <button class="btn btn-primary bg-[#15803D]">Cart</button>
+                         <button class="btn btn-primary bg-[#15803D]" onclick="addToCart(${tree.id}, '${tree.name}', ${tree.price})"  >Cart</button>
                        </div>
                   </div>
               
@@ -98,4 +100,42 @@ allTreesButton.addEventListener('click',function(){
     treesContainer.innerHTML="";
     loadTrees();
  })
+
+//  add to cart 
+
+function addToCart(id , name , price){
+
+ cart.push(
+    {
+        id,
+        name,
+        price,
+        quantity:1
+    });
+    updatecart()
+    
+}
+
+function updatecart() {
+    cartContainer.innerHTML=''
+    cart.forEach((item)=> {
+     const cartItem =document.createElement('div')
+     cartItem.className = 'card card-body bg-slate-100'
+     cartItem.innerHTML=`
+             <div class="flex justify-between items-center">
+                                <div>
+                                    <h2 class="font-bold">${item.name}</h2>
+                                    <p>  ${item.price} x ${item.quantity}</p>
+                                </div>
+                                <button class="btn btn-ghost">X</button>
+                            </div>
+                            <p class="text-right font-semibold text-xl">${item.price* item.quantity}</p>
+        
+     
+     `
+     cartContainer.appendChild(cartItem);
+
+    })
+    
+}
 
