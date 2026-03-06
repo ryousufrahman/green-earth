@@ -1,7 +1,7 @@
 const categoriesContainer =document.getElementById('catagory-container');
  const treesContainer =document.getElementById('trees-container')
  const allTreesButton =document.getElementById('all-trees-btn')
- const cart =[];
+ let cart =[];
  const cartContainer =document.getElementById('cartContainer')
  
 // this funtion for all the tree button
@@ -132,7 +132,7 @@ function updatecart() {
                                     <h2 class="font-bold">${item.name}</h2>
                                     <p>  ${item.price} x ${item.quantity}</p>
                                 </div>
-                                <button class="btn btn-ghost">X</button>
+                                <button class="btn btn-ghost" onclick="removeFromCart(${item.id})" >X</button>
                             </div>
                             <p class="text-right font-semibold text-xl">${item.price* item.quantity}</p>
         
@@ -141,6 +141,14 @@ function updatecart() {
      cartContainer.appendChild(cartItem);
 
     })
+    
+}
+
+function removeFromCart(treeId) {
+    
+    const updatedCartElement =cart.filter((item)=> item.id !=treeId);
+    cart =updatedCartElement;
+    updatecart()
     
 }
 
